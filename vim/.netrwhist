@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/sunny/jumei/.vagrant/machines'
+let g:netrw_dirhist_2='/Users/sunny/jumei/.vagrant/machines/default'
+let g:netrw_dirhist_3='/Users/sunny/jumei/.vagrant/machines/default/virtualbox'

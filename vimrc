@@ -33,6 +33,9 @@ endfunction
 inoremap <tab> <C-R>=SmartTab('')<CR>
 inoremap <s-tab> <C-R>=SmartTab('r')<CR>
 
+" prj
+autocmd Bufread *.prj Project %
+autocmd Bufread *.prj set noautochdir
 " php
 autocmd FileType php nnoremap <CR> :w!<CR>:!php -l %<CR>
 autocmd FileType php nnoremap <F3> :append <CR>die(var_dump($<C-R>=expand("<cword>")<CR>));<CR>.<CR>
@@ -51,10 +54,13 @@ autocmd FileType javascript
 autocmd FileType sh nnoremap <F5> <ESC>:!clear&&sh <C-R>%
 
 " cscope
-noremap <F8> <ESC>:cs kill -1 <CR> <ESC>:!sh /home/sunny/.vim/cscope/create_cscope.sh<CR> <ESC>:cs add /tmp/cscope.out <CR>
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>csa <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del> <CR>
+noremap <Leader>csc <Esc>:!sh /Users/sunny/.vim/bin/create_scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5")<CR><del> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del><CR>
 
-"noremap <F9> <ESC>:!rm -rf /home/sunny/.vim/cscope/cscope.* <CR>
-
-noremap <S-F8> <Esc>:! /home/sunny/.vim/cscope/create_cscope.sh <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /home/sunny/.vim/cscope/cscope.out <CR>
 nnoremap <space> :cs f t <C-R>=expand("<cword>")<CR><CR> 
+nmap <c-\> :cs f e <C-R>=expand("<cword>")<CR><CR>
 nnoremap <F9> :!pman <C-R>=expand("<cword>")<CR><CR>
+
+
+noremap <leader>hb <ESC>:!hg blame % -u -d -q > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>

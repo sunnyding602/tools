@@ -64,3 +64,8 @@ nnoremap <F9> :!pman <C-R>=expand("<cword>")<CR><CR>
 
 
 noremap <leader>hb <ESC>:!hg blame % -u -d -q > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
+
+let g:LargeFile = 1024 * 1024 * 5
+augroup LargeFile
+    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType,Syntax nofoldenable nobackup | setlocal noswapfile bufhidden=unload | endif
+    augroup END

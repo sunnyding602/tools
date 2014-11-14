@@ -9,3 +9,6 @@ tools
 usage:
 1. use vim/bin/create/create_scope.sh to create index files
 2. install cscope on your mac
+
+3.0 add improvement when opening large files
+simple disable some funtionality which consume perfermance like syntax on
